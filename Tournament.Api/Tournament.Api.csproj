@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tournament.Application\Tournament.Application.csproj" />
+    <ProjectReference Include="..\Tournament.Domain\Tournament.Domain.csproj" />
+    <ProjectReference Include="..\Tournament.Infra.Ioc\Tournament.Infra.Ioc.csproj" />
+  </ItemGroup>
+
+</Project>
