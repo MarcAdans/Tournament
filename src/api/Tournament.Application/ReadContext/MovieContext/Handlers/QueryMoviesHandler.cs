@@ -13,7 +13,7 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
     {
         public async Task<IEnumerable<Movie>> Handle(QueryMoviesRequest request, CancellationToken cancellationToken)
         {
-            const string urlApi = "https://copadosfilmes.azurewebsites.net/api/filmes";
+            const string urlApi = "https://copadosfilmes.azurewebsites.net/api/filmes" 
 
             using (var client = new HttpClient())
             {

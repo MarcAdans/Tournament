@@ -7,13 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7499526C-796
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{AFD43FE3-BA64-40B7-9501-BEE10C8CDFD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tournament.Api", "Tournament.Api\Tournament.Api.csproj", "{6EE049D3-00D4-4A3E-9B43-F787384A1592}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tournament.Api", "src\api\Tournament.Api\Tournament.Api.csproj", "{6EE049D3-00D4-4A3E-9B43-F787384A1592}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tournament.Application", "Tournament.Application\Tournament.Application.csproj", "{E535838B-64A7-4C40-B469-29D19C60BEB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tournament.Application", "src\api\Tournament.Application\Tournament.Application.csproj", "{E535838B-64A7-4C40-B469-29D19C60BEB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tournament.Domain", "Tournament.Domain\Tournament.Domain.csproj", "{ABD47CE6-715F-47B7-8FDA-AA27A2BC5AE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tournament.Domain", "src\api\Tournament.Domain\Tournament.Domain.csproj", "{ABD47CE6-715F-47B7-8FDA-AA27A2BC5AE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tournament.Infra.Ioc", "Tournament.Infra.Ioc\Tournament.Infra.Ioc.csproj", "{E7945D73-085E-4FFA-A140-A0D04C9E6254}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tournament.Infra.Ioc", "src\api\Tournament.Infra.Ioc\Tournament.Infra.Ioc.csproj", "{E7945D73-085E-4FFA-A140-A0D04C9E6254}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
