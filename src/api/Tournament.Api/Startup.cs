@@ -32,7 +32,7 @@ namespace Tournament.Api
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplicationServices()
+            services.AddApplicationServices(Configuration)
                     .AddSingleton(Configuration)
                     .AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

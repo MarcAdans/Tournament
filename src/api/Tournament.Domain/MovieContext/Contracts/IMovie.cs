@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Tournament.Domain.MovieContext.Contracts
+﻿namespace Tournament.Domain.MovieContext.Contracts
 {
-    interface IMovie
+    public interface IMovie
     {
+        string Id { get; }
+
+        string Title { get; }
+
+        int Year { get; }
+
+        decimal Rate { get; }
     }
 }

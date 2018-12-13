@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Tournament.Domain.MovieContext.Contracts;
 
 namespace Tournament.Domain.MovieContext.Models
 {
-    public class Movie
+    public class Movie : IMovie
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Tournament.Application.ReadContext.TeamContext.Requests;
-using Tournament.Domain;
+using Tournament.Domain.ImdbContext.Models;
 using Tournament.Domain.MovieContext.Models;
 
 namespace Tournament.Api.Controllers
@@ -43,5 +43,27 @@ namespace Tournament.Api.Controllers
 
             return Ok(movies);
         }
+
+        /// <summary>
+        /// Teste
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}", Name = "Get")]
+        [ProducesResponseType(typeof(ImdbMovie), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAsync(QueryMoviesByIdRequest id)
+        {
+            var movie = await mediator.Send(id).ConfigureAwait(false);
+
+            if (movie is null || string.IsNullOrWhiteSpace(movie.Id))
+            {
+                return NotFound();
+            }
+
+            return Ok(movie);
+        }
+
     }
 }
