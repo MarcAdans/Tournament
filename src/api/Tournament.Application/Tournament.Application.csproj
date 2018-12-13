@@ -9,8 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Tournament.CrossCutting\Tournament.CrossCutting.csproj" />
-    <ProjectReference Include="..\..\..\Tournament.Data\Tournament.Data.csproj" />
     <ProjectReference Include="..\Tournament.Domain\Tournament.Domain.csproj" />
   </ItemGroup>
 
