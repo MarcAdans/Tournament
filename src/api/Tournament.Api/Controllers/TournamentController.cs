@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Tournament.Application.ReadContext.TeamContext.Requests;
-using Tournament.Domain.ImdbContext.Models;
-using Tournament.Domain.MovieContext.Models;
+using Tournament.Application.ReadContext.MovieContext.Requests;
 
 namespace Tournament.Api.Controllers
 {
@@ -24,25 +22,25 @@ namespace Tournament.Api.Controllers
             this.mediator = mediator;
         }
 
-        ///// <summary>
-        ///// Teste
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns></returns>
-        //[HttpGet("{id}", Name = "Get")]
-        //[ProducesResponseType(typeof(ImdbMovie), (int)HttpStatusCode.OK)]
-        //[ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
-        //[ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]
-        //public async Task<IActionResult> GetAsync(string id)
-        //{
-        //    var movies = await mediator.Send(new QueryMoviesByIdRequest(id)).ConfigureAwait(false);
+        /// <summary>
+        /// Teste
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ProducesResponseType(typeof(IEnumerable<string>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> PostAsync([FromBody] QueryTournamentRequest request)
+        {
+            var movies = await mediator.Send(request).ConfigureAwait(false);
 
-        //    if (movies is null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (movies.HasError)
+            {
+                return BadRequest(movies.Data);
+            }
 
-        //    return Ok(movies);
-        //}
+            return Ok(movies.Data);
+        }
     }
 }

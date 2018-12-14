@@ -1,8 +1,11 @@
 ﻿using Microsoft.Extensions.Options;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Tournament.CrossCutting;
 using Tournament.Domain.Contracts;
 using Tournament.Domain.ImdbContext.Models;
+using Tournament.Domain.MovieContext.Models;
 
 namespace Tournament.Data.Connectors
 {
@@ -15,9 +18,23 @@ namespace Tournament.Data.Connectors
             this.options = options.Value;
         }
 
-        public async Task<ImdbMovie> GetMoviesAsync(string id)
+        public async Task<ImdbMovie> GetMovieAsync(string id) =>
+            await HttpClientService
+                      .GetAsync<ImdbMovie>(options.FindByIdEndPoint(id));
+
+        public async Task UpdateMovieAsync(Movie movie)
         {
-            return await HttpClientService.GetAsync<ImdbMovie>(options.FindByIdEndPoint(id));
+            var imdb = await HttpClientService
+                                 .GetAsync<ImdbMovie>(
+                                    options.FindByIdEndPoint(movie.Id));
+
+            movie.Poster = imdb.Poster;
+        }
+
+        public async Task UpdateMoviesAsync(IEnumerable<Movie> movies)
+        {
+            var tasks = movies.Select(UpdateMovieAsync);
+            await Task.WhenAll(tasks);
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Tournament.CrossCutting;
 using Tournament.Data.Connectors;
 using Tournament.Domain.Contracts;
+using Tournament.Domain.Services;
 
 namespace Tournament.Infra.Ioc
 {
@@ -23,6 +25,7 @@ namespace Tournament.Infra.Ioc
             services.AddTransient<ILambda3MovieConnectorApi, Lambda3MovieConnectorApi>()
                     .AddTransient<IImdbMovieConnectorApi, ImdbMovieConnectorApi>();
 
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
             return services;
         }
     }

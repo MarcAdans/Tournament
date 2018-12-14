@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Tournament.Domain.MovieContext.Contracts;
+using Tournament.Domain.Lambda3Context.Models;
 
 namespace Tournament.Domain.Contracts
 {
     public interface ILambda3MovieConnectorApi
     {
-        Task<IEnumerable<IMovie>> GetMoviesAsync();
+        Task<IEnumerable<Lambda3Movie>> GetMoviesAsync();
     }
 }

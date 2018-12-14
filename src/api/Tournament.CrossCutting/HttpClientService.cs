@@ -14,11 +14,12 @@ namespace Tournament.CrossCutting
 
                 response.EnsureSuccessStatusCode();
 
-                var data = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
+                }
 
-                var result = JsonConvert.DeserializeObject<T>(data);
-
-                return result;
+                return default(T);
             }
         }
     }

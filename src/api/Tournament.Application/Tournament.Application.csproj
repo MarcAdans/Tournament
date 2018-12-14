@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="FluentValidation" Version="8.1.1" />
+    <PackageReference Include="Flunt" Version="1.0.2" />
     <PackageReference Include="MediatR" Version="6.0.0" />
   </ItemGroup>
 
@@ -19,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ReadContext\MovieContext\Handlers\QueryTournamentHandler.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="ReadContext\MovieContext\Handlers\QueryMoviesHandler.cs">
       <SubType>Component</SubType>
     </Compile>

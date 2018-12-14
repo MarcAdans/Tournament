@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Tournament.Domain.ImdbContext.Models;
 
-namespace Tournament.Application.ReadContext.TeamContext.Requests
+namespace Tournament.Application.ReadContext.MovieContext.Requests
 {
     public class QueryMoviesByIdRequest : IRequest<ImdbMovie>
     {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Tournament.Domain.Contracts;
 using Tournament.Domain.ImdbContext.Models;
 
-namespace Tournament.Application.ReadContext.TeamContext.Requests
+namespace Tournament.Application.ReadContext.MovieContext.Requests
 {
     public class QueryMoviesByIdHandler : IRequestHandler<QueryMoviesByIdRequest, ImdbMovie>
     {
@@ -17,7 +17,7 @@ namespace Tournament.Application.ReadContext.TeamContext.Requests
 
         public async Task<ImdbMovie> Handle(QueryMoviesByIdRequest request, CancellationToken cancellationToken)
         {
-            return await connectorApi.GetMoviesAsync(request.Id);
+            return await connectorApi.GetMovieAsync(request.Id);
         }
     }
 }
