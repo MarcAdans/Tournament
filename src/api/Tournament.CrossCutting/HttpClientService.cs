@@ -10,16 +10,16 @@ namespace Tournament.CrossCutting
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync(urlApi);
+                var response = await client.GetAsync(urlApi)
+                                           .ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
-                }
-
-                return default(T);
+                return response.IsSuccessStatusCode
+                     ? JsonConvert.DeserializeObject<T>(
+                         await response.Content.ReadAsStringAsync()
+                                               .ConfigureAwait(false))
+                     : default(T);
             }
         }
     }

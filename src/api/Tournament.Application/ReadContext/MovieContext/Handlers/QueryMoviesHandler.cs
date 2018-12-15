@@ -29,14 +29,16 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
             this.imdbApi = imdbApi;
         }
 
-        public async Task<IEnumerable<Movie>> Handle(QueryMoviesRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Movie>> Handle(QueryMoviesRequest request,
+            CancellationToken cancellationToken)
         {
             logger.LogTrace("Buscando os Filmes na API da Lambda3");
             var lambda3Movies = await lambda3Api.GetMoviesAsync();
             var movies = mapper.Map<IEnumerable<Movie>>(lambda3Movies);
 
             logger.LogTrace("Atualizando a imagem para poster");
-            await imdbApi.UpdateMoviesAsync(movies);
+            await imdbApi.UpdateMoviesAsync(movies)
+                         .ConfigureAwait(false);
             return movies;
         }
     }

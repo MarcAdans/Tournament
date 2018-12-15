@@ -12,7 +12,9 @@ namespace Tournament.Test.CrossCutting
         [Fact]
         public async Task Should_GetHttpClient()
         {
-            var result = await HttpClientService.GetAsync<List<Lambda3Movie>>("https://copadosfilmes.azurewebsites.net/api/filmes");
+            var result = await HttpClientService
+                .GetAsync<List<Lambda3Movie>>("https://copadosfilmes.azurewebsites.net/api/filmes")
+                .ConfigureAwait(false);
 
             Assert.NotNull(result);
             Assert.True(result.Any());

@@ -19,10 +19,12 @@ namespace Tournament.Application.ReadContext.MovieContext.Requests
             this.logger = logger;
         }
 
-        public async Task<ImdbMovie> Handle(QueryMovieByIdRequest request, CancellationToken cancellationToken)
+        public async Task<ImdbMovie> Handle(QueryMovieByIdRequest request,
+            CancellationToken cancellationToken)
         {
             logger.LogTrace($"Buscando informações do file {request.Id}");
-            return await connectorApi.GetMovieAsync(request.Id);
+            return await connectorApi.GetMovieAsync(request.Id)
+                                     .ConfigureAwait(false);
         }
     }
 }

@@ -12,7 +12,8 @@ namespace Tournament.Domain.Services
 
             for (int i = 0; i < movies.Count() / 2; i++)
             {
-                matchups.Add(new Match(movies.ElementAt(i), movies.ElementAt(movies.Count() - (i + 1))));
+                matchups.Add(new Match(movies.ElementAt(i),
+                    movies.ElementAt(movies.Count() - (i + 1))));
             }
 
             return matchups;

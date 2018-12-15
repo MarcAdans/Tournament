@@ -1,6 +1,6 @@
-﻿using MediatR;
+﻿using Flunt.Notifications;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Tournament.Application.ReadContext.MovieContext.Requests;
@@ -30,18 +30,16 @@ namespace Tournament.Api.Controllers
         /// <returns>Cálculo completo sobre os desafios</returns>
         [HttpPost]
         [ProducesResponseType(typeof(CompleteTournament), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(Flunt.Notifications.Notification), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Notification), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> PostAsync([FromBody] QueryTournamentRequest request)
         {
-            var movies = await mediator.Send(request).ConfigureAwait(false);
+            var movies = await mediator.Send(request)
+                                       .ConfigureAwait(false);
 
-            if (movies.HasError)
-            {
-                return BadRequest(movies.Data);
-            }
-
-            return Ok(movies.Data);
+            return movies.HasError
+                 ? BadRequest(movies.Data)
+                 : (IActionResult)Ok(movies.Data);
         }
     }
 }

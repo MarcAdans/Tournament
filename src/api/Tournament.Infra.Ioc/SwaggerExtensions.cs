@@ -11,7 +11,8 @@ namespace Tournament.Infra.Ioc
 {
     public static class SwaggerExtensions
     {
-        public static IServiceCollection AddSwagger(this IServiceCollection services,
+        public static IServiceCollection AddSwagger(
+            this IServiceCollection services,
             IConfiguration configuration)
         {
             var options = GetOptions(configuration);
@@ -56,7 +57,8 @@ namespace Tournament.Infra.Ioc
             }
         }
 
-        public static IApplicationBuilder UseConfigSwagger(this IApplicationBuilder app,
+        public static IApplicationBuilder UseConfigSwagger(
+            this IApplicationBuilder app,
             IConfiguration configuration)
         {
             app.UseSwagger();
@@ -70,7 +72,8 @@ namespace Tournament.Infra.Ioc
             return app;
         }
 
-        private static SwaggerConfiguration GetOptions(IConfiguration configuration)
+        private static SwaggerConfiguration GetOptions(
+            IConfiguration configuration)
         {
             var result = new SwaggerConfiguration();
             configuration.GetSection(nameof(SwaggerConfiguration)).Bind(result);

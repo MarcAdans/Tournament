@@ -19,6 +19,7 @@ namespace Tournament.Data.Connectors
 
         public async Task<IEnumerable<Lambda3Movie>> GetMoviesAsync() =>
             await HttpClientService
-                     .GetAsync<IEnumerable<Lambda3Movie>>(options.BaseEndpoint);
+                .GetAsync<IEnumerable<Lambda3Movie>>(options.BaseEndpoint)
+                .ConfigureAwait(false);
     }
 }

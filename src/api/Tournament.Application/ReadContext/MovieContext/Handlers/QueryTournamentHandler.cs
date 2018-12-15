@@ -31,10 +31,12 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
             this.imdbApi = imdbApi;
         }
 
-        public async Task<Response> Handle(QueryTournamentRequest request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(QueryTournamentRequest request,
+            CancellationToken cancellationToken)
         {
             logger.LogTrace("Buscando os Filmes na API da Lambda3");
-            var lambda3Movies = await lambda3Api.GetMoviesAsync();
+            var lambda3Movies = await lambda3Api.GetMoviesAsync()
+                                                .ConfigureAwait(false);
 
             logger.LogTrace("Verifica se todos os filmes foram encontrados");
             if (request.Movies.Except(lambda3Movies.Select(s => s.Id)).Any())
@@ -49,7 +51,8 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
             var movies = mapper.Map<IEnumerable<Movie>>(lambda3Movies)
                                        .OrderBy(m => m.Title)
                                        .Select(m => m);
-            await imdbApi.UpdateMoviesAsync(movies);
+            await imdbApi.UpdateMoviesAsync(movies)
+                         .ConfigureAwait(false);
 
             var result = new CompleteTournament
             {

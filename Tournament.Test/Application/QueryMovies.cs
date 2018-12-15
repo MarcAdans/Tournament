@@ -67,8 +67,10 @@ namespace Tournament.Test.Application
             imdbApi.When(x => x.UpdateMoviesAsync(Arg.Any<IEnumerable<Movie>>()))
                    .Do(x => counter++);
 
-            var response = await handler.Handle(new QueryMoviesRequest()
-                                    , CancellationToken.None);
+            var response = await handler.Handle(
+                new QueryMoviesRequest(),
+                    CancellationToken.None)
+                    .ConfigureAwait(false);
 
             Assert.Equal(1, counter);
             Assert.NotNull(response);
@@ -90,8 +92,10 @@ namespace Tournament.Test.Application
             imdbApi.When(x => x.UpdateMoviesAsync(Arg.Any<IEnumerable<Movie>>()))
                    .Do(x => counter++);
 
-            var response = await handler.Handle(new QueryMoviesRequest()
-                                    , CancellationToken.None);
+            var response = await handler.Handle(
+                new QueryMoviesRequest(),
+                        CancellationToken.None)
+                        .ConfigureAwait(false);
 
             Assert.Equal(1, counter);
             Assert.Null(response);

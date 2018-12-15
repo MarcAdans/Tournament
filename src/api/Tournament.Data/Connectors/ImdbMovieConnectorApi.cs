@@ -20,13 +20,14 @@ namespace Tournament.Data.Connectors
 
         public async Task<ImdbMovie> GetMovieAsync(string id) =>
             await HttpClientService
-                      .GetAsync<ImdbMovie>(options.FindByIdEndPoint(id));
+                .GetAsync<ImdbMovie>(options.FindByIdEndPoint(id))
+                .ConfigureAwait(false);
 
         public async Task UpdateMovieAsync(Movie movie)
         {
             var imdb = await HttpClientService
-                                 .GetAsync<ImdbMovie>(
-                                    options.FindByIdEndPoint(movie.Id));
+                .GetAsync<ImdbMovie>(options.FindByIdEndPoint(movie.Id))
+                .ConfigureAwait(false);
 
             movie.Poster = imdb.Poster;
         }
@@ -34,7 +35,8 @@ namespace Tournament.Data.Connectors
         public async Task UpdateMoviesAsync(IEnumerable<Movie> movies)
         {
             var tasks = movies.Select(UpdateMovieAsync);
-            await Task.WhenAll(tasks);
+            await Task.WhenAll(tasks)
+                      .ConfigureAwait(false);
         }
     }
 }

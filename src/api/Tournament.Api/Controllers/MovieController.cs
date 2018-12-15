@@ -34,14 +34,12 @@ namespace Tournament.Api.Controllers
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> GetAsync()
         {
-            var movies = await mediator.Send(new QueryMoviesRequest()).ConfigureAwait(false);
+            var movies = await mediator.Send(new QueryMoviesRequest())
+                                       .ConfigureAwait(false);
 
-            if (movies is null)
-            {
-                return NotFound();
-            }
-
-            return Ok(movies);
+            return movies is null
+                ? NotFound()
+                : (IActionResult)Ok(movies);
         }
 
         /// <summary>
@@ -55,14 +53,12 @@ namespace Tournament.Api.Controllers
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> GetAsync(QueryMovieByIdRequest id)
         {
-            var movie = await mediator.Send(id).ConfigureAwait(false);
+            var movie = await mediator.Send(id)
+                                      .ConfigureAwait(false);
 
-            if (movie is null || string.IsNullOrWhiteSpace(movie.Id))
-            {
-                return NotFound();
-            }
-
-            return Ok(movie);
+            return movie is null || string.IsNullOrWhiteSpace(movie.Id)
+                 ? NotFound()
+                 : (IActionResult)Ok(movie);
         }
     }
 }

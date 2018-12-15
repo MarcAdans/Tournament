@@ -41,8 +41,10 @@ namespace Tournament.Test.Application
                            Id = MovieId
                        });
 
-            var response = await handler.Handle(new QueryMovieByIdRequest("tt0317705")
-                                    , CancellationToken.None);
+            var response = await handler.Handle(
+                new QueryMovieByIdRequest("tt0317705"),
+                        CancellationToken.None)
+                        .ConfigureAwait(false);
 
             Assert.NotNull(response);
             Assert.Equal(response.Title, MovieName);
@@ -55,8 +57,10 @@ namespace Tournament.Test.Application
             connectorApi.GetMovieAsync(Arg.Any<string>())
                        .Returns(default(ImdbMovie));
 
-            var response = await handler.Handle(new QueryMovieByIdRequest("tt0317705")
-                                    , CancellationToken.None);
+            var response = await handler.Handle(
+                new QueryMovieByIdRequest("tt0317705"),
+                        CancellationToken.None)
+                        .ConfigureAwait(false);
 
             Assert.Null(response);
         }
