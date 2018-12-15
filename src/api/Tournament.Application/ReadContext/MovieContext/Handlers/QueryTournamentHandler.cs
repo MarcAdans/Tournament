@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -17,28 +18,34 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
         private readonly ILambda3MovieConnectorApi lambda3Api;
         private readonly IImdbMovieConnectorApi imdbApi;
         private readonly IMapper mapper;
+        private readonly ILogger<QueryTournamentHandler> logger;
 
         public QueryTournamentHandler(IMapper mapper,
+            ILogger<QueryTournamentHandler> logger,
             ILambda3MovieConnectorApi lambda3Api,
             IImdbMovieConnectorApi imdbApi)
         {
             this.mapper = mapper;
-
+            this.logger = logger;
             this.lambda3Api = lambda3Api;
             this.imdbApi = imdbApi;
         }
 
         public async Task<Response> Handle(QueryTournamentRequest request, CancellationToken cancellationToken)
         {
+            logger.LogTrace("Buscando os Filmes na API da Lambda3");
             var lambda3Movies = await lambda3Api.GetMoviesAsync();
-            var except = request.Movies.Except(lambda3Movies.Select(s => s.Id));
 
-            if (except.Any())
+            logger.LogTrace("Verifica se todos os filmes foram encontrados");
+            if (request.Movies.Except(lambda3Movies.Select(s => s.Id)).Any())
             {
+                logger.LogInformation("Não foram encontrados todos os filmes");
+
                 request.AddNotification("Movies", "Não foram encontrados todos os filmes correspondentes em nossa base de dados");
                 return new Response(request.Notifications, true);
             }
 
+            logger.LogTrace("Ordena os filmes para montagem dos desafios");
             var movies = mapper.Map<IEnumerable<Movie>>(lambda3Movies)
                                        .OrderBy(m => m.Title)
                                        .Select(m => m);
@@ -49,6 +56,7 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
                 Movies = movies
             };
 
+            logger.LogTrace("Calculando as partidas");
             while (movies.Count() > 1)
             {
                 var match = CreateMatchups(movies);

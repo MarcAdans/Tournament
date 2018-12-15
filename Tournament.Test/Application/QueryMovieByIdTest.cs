@@ -1,4 +1,5 @@
-﻿using NSubstitute;
+﻿using Microsoft.Extensions.Logging;
+using NSubstitute;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,12 +18,14 @@ namespace Tournament.Test.Application
 
         private readonly IImdbMovieConnectorApi connectorApi;
         private readonly QueryMovieByIdHandler handler;
+        private readonly ILogger<QueryMovieByIdHandler> logger;
 
         public QueryMovieByIdTest()
         {
             connectorApi = Substitute.For<IImdbMovieConnectorApi>();
+            logger = LoggerHelper.GetLogger<QueryMovieByIdHandler>();
 
-            handler = new QueryMovieByIdHandler(connectorApi);
+            handler = new QueryMovieByIdHandler(connectorApi, logger);
         }
 
         [Fact]

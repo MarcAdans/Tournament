@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using NSubstitute;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Tournament.Test.Application
 
         private readonly IMapper mapper;
         private readonly QueryMoviesHandler handler;
+        private readonly ILogger<QueryMoviesHandler> logger;
 
         public QueryMovies()
         {
@@ -31,8 +33,9 @@ namespace Tournament.Test.Application
 
             imdbApi = Substitute.For<IImdbMovieConnectorApi>();
             lambda3Api = Substitute.For<ILambda3MovieConnectorApi>();
+            logger = LoggerHelper.GetLogger<QueryMoviesHandler>();
 
-            handler = new QueryMoviesHandler(mapper, lambda3Api, imdbApi);
+            handler = new QueryMoviesHandler(mapper, logger, lambda3Api, imdbApi);
         }
 
         [Fact]
