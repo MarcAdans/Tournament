@@ -18,7 +18,7 @@ namespace Tournament.Application.ReadContext.MovieContext.Requests
         [Required]
         [StringLength(10, MinimumLength = 3)]
         [Display(Name = "Movie Id")]
-        [RegularExpression(@"(tt)\d+", ErrorMessage ="Invalid Id")]
+        [RegularExpression(@"(tt)\d+", ErrorMessage = "Invalid Id")]
         public string Id { get; set; }
     }
 }

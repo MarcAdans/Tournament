@@ -43,12 +43,12 @@ namespace Tournament.Api
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        public static void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseConfigSwagger();
+                app.UseConfigSwagger(Configuration);
             }
             else
             {

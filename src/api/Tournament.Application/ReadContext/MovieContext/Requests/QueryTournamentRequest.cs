@@ -3,6 +3,7 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Tournament.Domain.Models;
 
 namespace Tournament.Application.ReadContext.MovieContext.Requests
@@ -11,16 +12,16 @@ namespace Tournament.Application.ReadContext.MovieContext.Requests
     {
         public const int REQUIRED_QUANTITY_MOVIES = 8;
 
-        public QueryTournamentRequest()
+        public QueryTournamentRequest(IEnumerable<string> movies)
         {
-            Movies = new List<string>();
+            Movies = movies;
 
             AddNotifications(new Contract()
                 .Requires()
                 .IsNotNull(Movies,
                         nameof(Movies),
                         "Informe a lista de filmes")
-                .IsTrue(Movies?.Count() <= 1,
+                .IsTrue(Movies?.Count() > 1,
                         nameof(Movies),
                         "A lista deve ter mais de 1 item")
                 .IsTrue(RoundsValid(Movies?.Count()),
@@ -29,6 +30,9 @@ namespace Tournament.Application.ReadContext.MovieContext.Requests
                  .IsTrue(Movies?.Distinct().Count() == Movies?.Count(),
                         nameof(Movies),
                         "Existem itens duplicados")
+                 .IsTrue(ValidateMoviesItem(),
+                        nameof(Movies),
+                        "Existem códigos inválidos")
                         );
         }
 
@@ -40,11 +44,15 @@ namespace Tournament.Application.ReadContext.MovieContext.Requests
 
         private bool ValidateMoviesItem()
         {
-            return false;
-            //this.Movies?.ToList().ForEach(filme =>
-            //{
-            //    filme.Validate();
-            //});
+            foreach (var movie in Movies)
+            {
+                if (!Regex.IsMatch(movie, @"(tt)\d+"))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

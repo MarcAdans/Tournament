@@ -15,15 +15,16 @@ namespace Tournament.Infra.Ioc
             this IServiceCollection services, IConfiguration configuration)
         {
             services.AddMediatr()
-                    .AddSwagger()
+                    .AddSwagger(configuration)
                     .AddAutoMapper()
                     .AddLogging();
 
             services.Configure<Lambda3MovieOptions>(configuration.GetSection(nameof(Lambda3MovieOptions)));
             services.Configure<ImdbMovieOptions>(configuration.GetSection(nameof(ImdbMovieOptions)));
+            services.Configure<SwaggerConfiguration>(configuration.GetSection(nameof(SwaggerConfiguration)));
 
             services.AddTransient<ILambda3MovieConnectorApi, Lambda3MovieConnectorApi>()
-                    .AddTransient<IImdbMovieConnectorApi, ImdbMovieConnectorApi>();
+                        .AddTransient<IImdbMovieConnectorApi, ImdbMovieConnectorApi>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
             return services;

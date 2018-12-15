@@ -20,7 +20,7 @@
     "Tournament.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/movie",
+      "launchUrl": "swagger/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

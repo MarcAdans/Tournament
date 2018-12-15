@@ -8,6 +8,7 @@ namespace Tournament.Domain.Contracts
     public interface IImdbMovieConnectorApi
     {
         Task<ImdbMovie> GetMovieAsync(string id);
+
         Task UpdateMoviesAsync(IEnumerable<Movie> movies);
     }
 }

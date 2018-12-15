@@ -23,9 +23,9 @@ namespace Tournament.Api.Controllers
         }
 
         /// <summary>
-        /// Teste
+        ///
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(IEnumerable<string>), (int)HttpStatusCode.OK)]

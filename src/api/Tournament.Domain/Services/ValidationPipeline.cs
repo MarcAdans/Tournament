@@ -5,20 +5,19 @@ using Tournament.Domain.Models;
 
 namespace Tournament.Domain.Services
 {
-    public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> 
-        where TRequest : EntityBase 
+    public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : EntityBase
         where TResponse : Response
     {
-
         public async Task<TResponse> Handle(TRequest request,
-            CancellationToken cancellationToken, 
+            CancellationToken cancellationToken,
             RequestHandlerDelegate<TResponse> next)
         {
             var obj = (EntityBase)request;
 
             obj.Validate();
 
-            if (!(obj).Valid)
+            if ((obj).Invalid)
             {
                 var response = (TResponse)new Response(obj.Notifications, true);
                 return response;

@@ -1,36 +1,39 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.IO;
+using Tournament.CrossCutting;
 
 namespace Tournament.Infra.Ioc
 {
     public static class SwaggerExtensions
     {
-        private const string Url = "/swagger/v1/swagger.json";
-
-        public static IServiceCollection AddSwagger(this IServiceCollection services)
+        public static IServiceCollection AddSwagger(this IServiceCollection services,
+            IConfiguration configuration)
         {
+            var options = GetOptions(configuration);
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info
+                c.SwaggerDoc(options.Version, new Info
                 {
-                    Title = nameof(Tournament),
-                    Version = "v1",
-                    Description = "Documentação do sistema",
-                    TermsOfService = "None",
+                    Title = options.Title,
+                    Version = options.Version,
+                    Description = options.Description,
+                    TermsOfService = options.TermsOfService,
                     Contact = new Contact
                     {
-                        Name = "Márcio Adão",
-                        Email = "",
-                        Url = ""
+                        Name = options.Contact.Name,
+                        Email = options.Contact.Email,
+                        Url = options.Contact.Url
                     },
                     License = new License
                     {
-                        Name = "Use under LICX",
-                        Url = "https://example.com/license"
+                        Name = options.License.Name,
+                        Url = options.License.Url
                     }
                 });
                 SetXmlDocumentation(c);
@@ -53,16 +56,26 @@ namespace Tournament.Infra.Ioc
             }
         }
 
-        public static IApplicationBuilder UseConfigSwagger(this IApplicationBuilder app)
+        public static IApplicationBuilder UseConfigSwagger(this IApplicationBuilder app,
+            IConfiguration configuration)
         {
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint(Url,
-                    nameof(Tournament));
+                var options = GetOptions(configuration);
+
+                c.SwaggerEndpoint(options.Endpoint, nameof(Tournament));
             });
 
             return app;
+        }
+
+        private static SwaggerConfiguration GetOptions(IConfiguration configuration)
+        {
+            var result = new SwaggerConfiguration();
+            configuration.GetSection(nameof(SwaggerConfiguration)).Bind(result);
+
+            return result;
         }
     }
 }
