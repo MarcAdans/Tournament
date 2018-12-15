@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "066defe4-8691-45b5-a15b-0bc531fa44ae",
+		"name": "Tournament",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tournament.Movie.Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/movie",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tournament.Movie.Get .Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/movie/:id",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"movie",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "tt3606756"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tournament.Tournament.Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"movies\":[\r\n      \"tt3606756\",\r\n      \"tt4881806\",\r\n      \"tt5164214\",\r\n      \"tt7784604\",\r\n      \"tt4154756\",\r\n      \"tt5463162\",\r\n      \"tt3778644\",\r\n      \"tt3501632\",\r\n   ]\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/tournament",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"tournament"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
