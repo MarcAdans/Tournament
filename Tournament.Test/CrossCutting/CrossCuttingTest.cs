@@ -10,7 +10,7 @@ namespace Tournament.Test.CrossCutting
     public class CrossCuttingTest
     {
         [Fact]
-        public async Task Should_GetHttpClient()
+        public async Task Should_GetHttpClientAsync()
         {
             var result = await HttpClientService
                 .GetAsync<List<Lambda3Movie>>("https://copadosfilmes.azurewebsites.net/api/filmes")

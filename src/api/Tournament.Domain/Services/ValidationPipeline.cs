@@ -17,7 +17,7 @@ namespace Tournament.Domain.Services
 
             obj.Validate();
 
-            if ((obj).Invalid)
+            if (obj.Invalid)
             {
                 var response = (TResponse)new Response(obj.Notifications, true);
                 return response;

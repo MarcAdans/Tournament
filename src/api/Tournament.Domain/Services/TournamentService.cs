@@ -19,9 +19,7 @@ namespace Tournament.Domain.Services
             return matchups;
         }
 
-        public static IEnumerable<Movie> PlayRound(IEnumerable<Match> matchups)
-        {
-            return matchups.Select(x => x.GetWinner);
-        }
+        public static IEnumerable<Movie> Round(IEnumerable<Match> matchups) =>
+            matchups.Select(x => x.GetWinner);
     }
 }

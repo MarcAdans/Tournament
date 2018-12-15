@@ -5,9 +5,7 @@
         public string BaseEndpoint { get; set; }
         public string Key { get; set; }
 
-        public string FindByIdEndPoint(string id)
-        {
-            return string.Format(BaseEndpoint, id, Key);
-        }
+        public string FindByIdEndPoint(string id) =>
+            string.Format(BaseEndpoint, id, Key);
     }
 }

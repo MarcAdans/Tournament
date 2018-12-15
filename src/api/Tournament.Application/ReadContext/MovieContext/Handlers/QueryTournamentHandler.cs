@@ -64,7 +64,7 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
             {
                 var match = CreateMatchups(movies);
                 result.AddMatches(match);
-                movies = PlayRound(match);
+                movies = Round(match);
             }
 
             return new Response(result);

@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tournament.CrossCutting", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tournament.Data", "src\api\Tournament.Data\Tournament.Data.csproj", "{DC022E8D-E812-48F6-94FB-9FD0EF84B60A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{F846BBAC-3200-4F67-8FDF-D37580F8C209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tournament.Angular.Web", "src\web\Tournament.Angular.Web\Tournament.Angular.Web.csproj", "{12E0C353-DC91-41B6-97A4-3024E662466F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,10 @@ Global
 		{DC022E8D-E812-48F6-94FB-9FD0EF84B60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC022E8D-E812-48F6-94FB-9FD0EF84B60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC022E8D-E812-48F6-94FB-9FD0EF84B60A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E0C353-DC91-41B6-97A4-3024E662466F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E0C353-DC91-41B6-97A4-3024E662466F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E0C353-DC91-41B6-97A4-3024E662466F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E0C353-DC91-41B6-97A4-3024E662466F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +78,8 @@ Global
 		{84147F52-4EB0-4534-AC32-DCE0B19E4F98} = {F38DA8E7-397A-4E52-970A-2C1E94BEDA3B}
 		{49EFC4A6-E4CE-45CF-B36C-823E05D8BF86} = {AFD43FE3-BA64-40B7-9501-BEE10C8CDFD3}
 		{DC022E8D-E812-48F6-94FB-9FD0EF84B60A} = {AFD43FE3-BA64-40B7-9501-BEE10C8CDFD3}
+		{F846BBAC-3200-4F67-8FDF-D37580F8C209} = {7499526C-796A-4623-B557-746B4441A685}
+		{12E0C353-DC91-41B6-97A4-3024E662466F} = {F846BBAC-3200-4F67-8FDF-D37580F8C209}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F7ECE97E-F823-406A-AD2B-37ABA1877D99}
