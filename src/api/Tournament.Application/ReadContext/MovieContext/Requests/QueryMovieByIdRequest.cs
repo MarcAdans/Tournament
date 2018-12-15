@@ -4,13 +4,13 @@ using Tournament.Domain.ImdbContext.Models;
 
 namespace Tournament.Application.ReadContext.MovieContext.Requests
 {
-    public class QueryMoviesByIdRequest : IRequest<ImdbMovie>
+    public class QueryMovieByIdRequest : IRequest<ImdbMovie>
     {
-        public QueryMoviesByIdRequest()
+        public QueryMovieByIdRequest()
         {
         }
 
-        public QueryMoviesByIdRequest(string id)
+        public QueryMovieByIdRequest(string id)
         {
             Id = id;
         }

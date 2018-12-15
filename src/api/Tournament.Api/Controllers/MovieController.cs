@@ -25,9 +25,9 @@ namespace Tournament.Api.Controllers
         }
 
         /// <summary>
-        /// Seleciona o motorista pelo código
+        /// Exibe a lista de Filmes
         /// </summary>
-        /// <returns>Motorista</returns>
+        /// <returns>Lista de Filmes</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Movie>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
@@ -45,15 +45,15 @@ namespace Tournament.Api.Controllers
         }
 
         /// <summary>
-        /// Teste
+        /// Busca informações detalhadas de um filme
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Código do filme</param>
+        /// <returns>Informações do filme da API do IMDB</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ImdbMovie), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> GetAsync(QueryMoviesByIdRequest id)
+        public async Task<IActionResult> GetAsync(QueryMovieByIdRequest id)
         {
             var movie = await mediator.Send(id).ConfigureAwait(false);
 

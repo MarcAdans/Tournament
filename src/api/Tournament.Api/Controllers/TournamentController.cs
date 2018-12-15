@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Tournament.Application.ReadContext.MovieContext.Requests;
+using Tournament.Domain.MovieContext.Models;
 
 namespace Tournament.Api.Controllers
 {
@@ -23,13 +24,13 @@ namespace Tournament.Api.Controllers
         }
 
         /// <summary>
-        ///
+        /// Calcula o torneio de desafios dos filmes.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="request">Lista de filmes que entraram na disputa</param>
+        /// <returns>Cálculo completo sobre os desafios</returns>
         [HttpPost]
-        [ProducesResponseType(typeof(IEnumerable<string>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
+        [ProducesResponseType(typeof(CompleteTournament), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Flunt.Notifications.Notification), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> PostAsync([FromBody] QueryTournamentRequest request)
         {

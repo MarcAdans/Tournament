@@ -24,6 +24,11 @@ namespace Tournament.Domain.MovieContext.Models
             get => Matches.Last().Last().WinnerId;
         }
 
+        public string ViceChampion
+        {
+            get => Matches.Last().Last().LoserId;
+        }
+
         public void AddMatches(IEnumerable<Match> matches) =>
             aggregateMatches.Add(matches);
     }

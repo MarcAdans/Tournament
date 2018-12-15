@@ -23,8 +23,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Lambda3Context\Contracts\" />
-  </ItemGroup>
-
 </Project>
