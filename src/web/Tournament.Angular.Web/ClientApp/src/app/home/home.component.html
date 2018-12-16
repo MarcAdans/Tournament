@@ -1,30 +1,31 @@
 <form ng-controller="MainCtrl">
   <div class="container">
-    <div class="row shadow-lg p-1 mb-3 mt-3 bg-white rounded">
+    <div *ngIf="!movies" class="row shadow-lg p-1 mb-3 mt-3 bg-white rounded">
+      <h5>Carregando filmes, aguarde...</h5>
+    </div>
+    <div *ngIf="movies" class="row shadow-lg p-1 mb-3 mt-3 bg-white rounded">
       <div class="col">
         <h5>Selecionados</h5>
         <h5 id="toptitle"> {{totalSelected}} de 8 Filmes</h5>
       </div>
       <div class="col text-right">
-        <button type="button" class="btn btn-dark">GERAR MEU CAMPEONATO</button>
+        <button  [disabled]="buttonState" (click)="calculateTournament()" type="button" class="btn btn-dark">GERAR MEU CAMPEONATO</button>
       </div>
     </div>
     <div class="row shadow-lg p-1 mb-2 bg-white rounded" *ngIf="movies">
       <div class="col">
         <div class="movies-container">
-          <div class="movie-item" *ngFor="let movie of movies" >
+          <div class="movie-item" *ngFor="let movie of movies">
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text">
-                  <input type="checkbox"
-                         value="{{movie.id}}"
-                         ng-model="item.selected"
-                         ng-change="updateTotal(item.selected)">
+                  <input type="checkbox" (change)="checkedState($event, movie.id)" value="{{movie.id}}" >
                 </div>
               </div>
               <div class="form-control">
-                <p class="align-middle">{{movie.titulo}}</p>
-                <p class="align-middle">{{movie.ano}}</p>
+                <img src="{{movie.poster}}" class="movie-poster text-center" />
+                <p class="movie-info">{{movie.title}}</p>
+                <p class="movie-info">{{movie.year}}</p>
               </div>
             </div>
           </div>

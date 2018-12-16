@@ -33,7 +33,8 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
             CancellationToken cancellationToken)
         {
             logger.LogTrace("Buscando os Filmes na API da Lambda3");
-            var lambda3Movies = await lambda3Api.GetMoviesAsync();
+            var lambda3Movies = await lambda3Api.GetMoviesAsync()
+                                                .ConfigureAwait(false);
             var movies = mapper.Map<IEnumerable<Movie>>(lambda3Movies);
 
             logger.LogTrace("Atualizando a imagem para poster");

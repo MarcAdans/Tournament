@@ -25,11 +25,18 @@ namespace Tournament.Data.Connectors
 
         public async Task UpdateMovieAsync(Movie movie)
         {
-            var imdb = await HttpClientService
-                .GetAsync<ImdbMovie>(options.FindByIdEndPoint(movie.Id))
-                .ConfigureAwait(false);
+            if (options.Enabled)
+            {
+                var imdb = await HttpClientService
+                    .GetAsync<ImdbMovie>(options.FindByIdEndPoint(movie.Id))
+                    .ConfigureAwait(false);
 
-            movie.Poster = imdb.Poster;
+                movie.Poster = imdb.Poster;
+            }
+            else
+            {
+                movie.Poster = options.DefaultPoster;
+            }
         }
 
         public async Task UpdateMoviesAsync(IEnumerable<Movie> movies)

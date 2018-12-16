@@ -36,6 +36,8 @@ namespace Tournament.Api
                     .AddSingleton(Configuration)
                     .AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddCors();
         }
 
         /// <summary>

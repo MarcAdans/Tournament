@@ -1,5 +1,6 @@
 ﻿using Flunt.Notifications;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace Tournament.Api.Controllers
         /// <param name="request">Lista de filmes que entraram na disputa</param>
         /// <returns>Cálculo completo sobre os desafios</returns>
         [HttpPost]
+        [DisableCors]
         [ProducesResponseType(typeof(CompleteTournament), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(Notification), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]

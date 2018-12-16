@@ -1,0 +1,35 @@
+<h2 class="uk-text-bold">Final Result</h2>
+
+<p>
+  See the final result of the film championship in a simple and fast way.
+</p>
+
+<div class="uk-text-center uk-grid-match" uk-grid>
+  <div class="uk-width-auto">
+    <div class="uk-card uk-card-default uk-card-body uk-background-secondary uk-light">
+      <h1>1&#186;</h1>
+    </div>
+  </div>
+  <div class="uk-width-expand uk-text-left uk-padding-remove-left uk-border">
+    <div class="uk-card uk-card-default uk-card-body">
+      <h1>{{tournament.champion}}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="uk-text-center uk-grid-match" uk-grid>
+  <div class="uk-width-auto">
+    <div class="uk-card uk-card-default uk-card-body uk-background-secondary uk-light">
+      <h1>2&#186;</h1>
+    </div>
+  </div>
+  <div class="uk-width-expand uk-text-left uk-padding-remove-left uk-border">
+    <div class="uk-card uk-card-default uk-card-body">
+      <h1>{{tournament.viceChampion}}</h1>
+    </div>
+  </div>
+</div>
+
+<p uk-margin>
+  <button class="uk-button uk-button-default uk-button-large" (click)="back()">Back</button>
+</p>

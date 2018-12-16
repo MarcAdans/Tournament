@@ -1,9 +1,10 @@
 .movies-container {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto;
   grid-gap: 10px;
   padding: 5px;
   width: 100%;
+
 }
 
 .movie-item {
@@ -12,4 +13,9 @@
 
 .movie-item .form-control {
     height: 150px;
+}
+
+.movie-poster {
+  height: 75px;
+  width: 75px;
 }
