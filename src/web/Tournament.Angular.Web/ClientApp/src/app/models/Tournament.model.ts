@@ -5,5 +5,4 @@ export class Tournament {
   matches?: ((Match)[] | null)[] | null;
   movies?: (Movie)[] | null;
   champion: string;
-  viceChampion: string;
-}
+  viceChampion: string;}

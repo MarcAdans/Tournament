@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Tournament } from '../models/tournament.model';
 import { Movie } from '../models/movie.model';
+import { Match } from '../models/match.model';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MovieService } from "../services/movie.service";
@@ -13,21 +14,16 @@ import { TournamentRequest } from '../models/TournamentRequest.model';
   templateUrl: './tournament.component.html',
   styleUrls: ['./tournament.component.css']
 })
-export class TournamentComponent{
-  
-  private champion: Movie;
-  private vice: Movie;
-  public tournament: Tournament;
+export class TournamentComponent {
 
+  public tournament: Tournament;
 
   constructor(private readonly tournamentService: TournamentService,
     private readonly toastr: ToastrService,
     private readonly router: Router,
     private data: TournamentRequest) {
 
-    
-
-    if (!this.data.movies) {
+    if (!this.data.movies || this.data.movies.length == 0) {
       this.data.movies = [
         "tt3606756",
         "tt4881806",
@@ -37,35 +33,47 @@ export class TournamentComponent{
         "tt5463162",
         "tt3778644",
         "tt3501632",
-      ];      
+      ];
     }
-
-    console.log(this.data.movies);
-
-    this.tournamentService.Calculate(this.data).subscribe(result => {
-      console.log(result);
-      this.tournament = result;
-    }, error => {
-      console.error(error);
-      this.toastr.error('Não nos abandone, deu ruim mas tente novamente.', 'Deu ruim...');
-      });
   }
 
+  ngOnInit(): void {
 
-  //ngOnInit(): void {
-  //  this.tournamentService.Calculate().subscribe(result => {
-  //    this.tournament = result;
-  //  }, error => {
-  //    console.error(error);
-  //    this.toastr.error('Não nos abandone, deu ruim mas tente novamente.', 'Deu ruim...');
-  //    });
+    if (!this.data.movies || this.data.movies.length == 0) {
+      this.back();
+      this.toastr.error('Você não selecionou nenhum item.', ':0');
 
-  //  console.log(this.tournament);
+    } else {
 
-  //  if (!this.tournament) {
-  //    this.back();
-  //  }
-  //}
+      this.tournamentService.Calculate(this.data).subscribe(result => {
+        console.log(result);
+        this.tournament = result;
+      }, error => {
+        console.error(error);
+        this.toastr.error('Não nos abandone, deu ruim mas tente novamente.', 'Deu ruim...');
+        this.back();
+      });
+    }
+
+    this.data.movies = [];
+  }
+
+  public getMovie(id: string): Movie {
+    return this.tournament.movies.filter(m => m.id == id)[0];
+  }
+
+  getMatchWinner(match: Match): Movie {
+    console.log(match);
+    return this.getMovie(match.winnerId);
+  }
+
+  public get champion(): Movie {
+    return this.getMovie(this.tournament.champion);
+  }
+
+  public get viceChampion(): Movie {
+    return this.getMovie(this.tournament.viceChampion);
+  }
 
   back() {
     this.router.navigate([""]);

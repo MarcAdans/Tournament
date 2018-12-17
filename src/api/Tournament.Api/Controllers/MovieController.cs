@@ -30,7 +30,6 @@ namespace Tournament.Api.Controllers
         /// </summary>
         /// <returns>Lista de Filmes</returns>
         [HttpGet]
-        [DisableCors]
         [ProducesResponseType(typeof(IEnumerable<Movie>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]
@@ -50,7 +49,6 @@ namespace Tournament.Api.Controllers
         /// <param name="id">Código do filme</param>
         /// <returns>Informações do filme da API do IMDB</returns>
         [HttpGet("{id}")]
-        [DisableCors]
         [ProducesResponseType(typeof(ImdbMovie), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.InternalServerError)]

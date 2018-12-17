@@ -39,11 +39,15 @@ namespace Tournament.Application.ReadContext.MovieContext.Requests
         public IEnumerable<string> Movies { get; set; }
 
         private static bool RoundsValid(int? totalMovies) =>
-            (Math.Pow(2, Math.Round(Math.Log(totalMovies.Value, 2)))
-            - totalMovies.Value) == 0;
+            (totalMovies is null)
+            ? false
+            : (Math.Pow(2, Math.Round(Math.Log(totalMovies.Value, 2)))
+               - totalMovies.Value) == 0;
 
         private bool ValidateMoviesItem()
         {
+            if (Movies is null) return true;
+
             foreach (var movie in Movies)
             {
                 if (!Regex.IsMatch(movie, @"(tt)\d+"))

@@ -13,12 +13,6 @@ namespace Tournament.Domain.MovieContext.Models
             movie2 = t2;
         }
 
-        public string Movide1Id =>
-            movie1.Id;
-
-        public string Movide2Id =>
-            movie2.Id;
-
         public string WinnerId =>
             movie1.GetWinner(movie2).Id;
 

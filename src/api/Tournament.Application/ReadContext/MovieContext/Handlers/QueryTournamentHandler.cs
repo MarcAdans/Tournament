@@ -39,7 +39,8 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
                                                 .ConfigureAwait(false);
 
             logger.LogTrace("Verifica se todos os filmes foram encontrados");
-            if (request.Movies.Except(lambda3Movies.Select(s => s.Id)).Any())
+            lambda3Movies = lambda3Movies.Where(m => request.Movies.Any(r => r == m.Id));
+            if (lambda3Movies.Count() != request.Movies.Count())
             {
                 logger.LogInformation("Não foram encontrados todos os filmes");
 

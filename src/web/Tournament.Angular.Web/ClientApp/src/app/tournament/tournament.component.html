@@ -1,35 +1,65 @@
-<h2 class="uk-text-bold">Final Result</h2>
+<div class="container-fluid">
+  <div *ngIf="!tournament" class="row shadow-lg p-1 mb-3 mt-3 bg-white rounded">
+    <h5>Carregando filmes, aguarde...</h5>
+  </div>
+  <div *ngIf="tournament" class="row p-1 mb-3 mt-3 ">
+    <nav class="navbar fixed-top ">
+      <div class="col text-right">
+        <button class="btn-lg btn-bd-primary" (click)="back()">CRIAR NOVO TORNEIO</button>
+      </div>
+    </nav>
+  </div>
 
-<p>
-  See the final result of the film championship in a simple and fast way.
-</p>
-
-<div class="uk-text-center uk-grid-match" uk-grid>
-  <div class="uk-width-auto">
-    <div class="uk-card uk-card-default uk-card-body uk-background-secondary uk-light">
-      <h1>1&#186;</h1>
+  <div *ngIf="tournament" class="row p-1 mb-3 after-nav">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <h1 class="text-light">1&ordm;</h1>
+        </div>
+      </div>
+      <div class="form-control">
+        <div class="row display-table">
+          <div class="col-1">
+            <img src="{{champion.poster}}" class="movie-poster text-left" />
+          </div>
+          <div class="col vertical-middle">
+            <h2 class="align-bottom">{{champion.title}}</h2>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="uk-width-expand uk-text-left uk-padding-remove-left uk-border">
-    <div class="uk-card uk-card-default uk-card-body">
-      <h1>{{tournament.champion}}</h1>
+  <div *ngIf="tournament" class="row p-1 mb-3 ">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <h1 class="text-light">2&ordm;</h1>
+        </div>
+      </div>
+      <div class="form-control">
+        <div class="row display-table">
+          <div class="col-1">
+            <img src="{{viceChampion.poster}}" class="movie-poster text-left" />
+          </div>
+          <div class="col vertical-middle">
+            <h2 class="align-bottom">{{viceChampion.title}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="tournament " class="row p-1 rounded row-tournament">
+    <div class="tournament text-light" *ngFor="let rounds of tournament.matches; let i=index">
+      <ng-template ngFor let-match [ngForOf]="rounds">
+        <ng-container *ngIf="{ winner: getMovie(match.winnerId), loser: getMovie(match.loserId)} as variable">
+          <div class="game rounded">{{variable.winner.title}}&nbsp;({{variable.winner.rate}})</div>
+          <div class="game rounded"><s>{{variable.loser.title}}&nbsp;({{variable.winner.rate}})</s></div>
+        </ng-container>
+      </ng-template>
+    </div>
+    <div class="tournament text-light">
+      <div class="game rounded">&#9813;&nbsp;{{champion.title}}&nbsp;&#9813;</div>
     </div>
   </div>
 </div>
 
-<div class="uk-text-center uk-grid-match" uk-grid>
-  <div class="uk-width-auto">
-    <div class="uk-card uk-card-default uk-card-body uk-background-secondary uk-light">
-      <h1>2&#186;</h1>
-    </div>
-  </div>
-  <div class="uk-width-expand uk-text-left uk-padding-remove-left uk-border">
-    <div class="uk-card uk-card-default uk-card-body">
-      <h1>{{tournament.viceChampion}}</h1>
-    </div>
-  </div>
-</div>
-
-<p uk-margin>
-  <button class="uk-button uk-button-default uk-button-large" (click)="back()">Back</button>
-</p>

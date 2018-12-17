@@ -51,6 +51,11 @@ namespace Tournament.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseConfigSwagger(Configuration);
+
+                app.UseCors(
+                    options => options.WithOrigins("https://localhost:44354/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()
+                                      .WithOrigins("http://localhost:44353/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()
+                );
             }
             else
             {

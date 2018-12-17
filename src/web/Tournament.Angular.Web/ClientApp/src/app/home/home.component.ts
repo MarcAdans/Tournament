@@ -51,7 +51,7 @@ export class HomeComponent {
   }
 
   get buttonState() {
-    return false; //(this.totalSelected < 8);
+    return (this.totalSelected < 8);
   }
 
   get totalSelected() {

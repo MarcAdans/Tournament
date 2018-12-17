@@ -1,36 +1,38 @@
-<form ng-controller="MainCtrl">
-  <div class="container">
-    <div *ngIf="!movies" class="row shadow-lg p-1 mb-3 mt-3 bg-white rounded">
-      <h5>Carregando filmes, aguarde...</h5>
-    </div>
-    <div *ngIf="movies" class="row shadow-lg p-1 mb-3 mt-3 bg-white rounded">
+<div class="container-fluid">
+  <div *ngIf="!movies" class="row shadow-lg p-1 mb-3 mt-3 bg-white rounded">
+    <h5>Carregando filmes, aguarde...</h5>
+  </div>
+  <div *ngIf="movies" class="row p-1 mb-3 mt-3 ">
+    <nav class="navbar fixed-top ">
       <div class="col">
-        <h5>Selecionados</h5>
-        <h5 id="toptitle"> {{totalSelected}} de 8 Filmes</h5>
+        <h5 class="text-light"> {{totalSelected}} de 8 Filmes</h5>
       </div>
       <div class="col text-right">
-        <button  [disabled]="buttonState" (click)="calculateTournament()" type="button" class="btn btn-dark">GERAR MEU CAMPEONATO</button>
+        <button [disabled]="buttonState" (click)="calculateTournament()" type="button" class="btn-lg btn-bd-primary">GERAR MEU CAMPEONATO</button>
       </div>
-    </div>
-    <div class="row shadow-lg p-1 mb-2 bg-white rounded" *ngIf="movies">
-      <div class="col">
-        <div class="movies-container">
-          <div class="movie-item" *ngFor="let movie of movies">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <input type="checkbox" (change)="checkedState($event, movie.id)" value="{{movie.id}}" >
-                </div>
+    </nav>    
+  </div>
+  <div class="row after-nav" *ngIf="movies">
+    <div class="col">
+      <div class="movies-container">
+        <div class="movie-item" *ngFor="let movie of movies">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text" data-toggle="buttons">
+                <label class="check-container">
+                  &nbsp;
+                  <input  type="checkbox" (change)="checkedState($event, movie.id)" value="{{movie.id}}">
+                  <span class="checkmark"></span>
+                </label>
               </div>
-              <div class="form-control">
-                <img src="{{movie.poster}}" class="movie-poster text-center" />
-                <p class="movie-info">{{movie.title}}</p>
-                <p class="movie-info">{{movie.year}}</p>
-              </div>
+            </div>
+            <div class="form-control">
+              <img src="{{movie.poster}}" class="movie-poster text-center" />
+              <p class="movie-info lead">{{movie.title}} ({{movie.year}})</p>              
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</form>
+</div>
