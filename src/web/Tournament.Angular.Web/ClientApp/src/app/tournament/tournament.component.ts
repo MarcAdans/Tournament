@@ -22,19 +22,6 @@ export class TournamentComponent {
     private readonly toastr: ToastrService,
     private readonly router: Router,
     private data: TournamentRequest) {
-
-    if (!this.data.movies || this.data.movies.length == 0) {
-      this.data.movies = [
-        "tt3606756",
-        "tt4881806",
-        "tt5164214",
-        "tt7784604",
-        "tt4154756",
-        "tt5463162",
-        "tt3778644",
-        "tt3501632",
-      ];
-    }
   }
 
   ngOnInit(): void {
