@@ -10,7 +10,9 @@ Solution!
         1.2 Selecione a opção 'Multiple Start Projects'
         1.3 Projeto Tournament.Angular.Web aplicar action como 'Start'
         1.4 Projeto Tournament.Api aplicar action como 'Start'
-<a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/solution-property.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/solution-property.png" align="left" height="300" width="500" ></a>
+        
+        
+<a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/solution-property.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/solution-property.png" height="300" width="500" ></a>
 
 Tournament.Api!
     2.Navegue até src/api/Tournament.Api, Click com o botão direito do mouse.
@@ -19,4 +21,4 @@ Tournament.Api!
         2.3 Selecione em launch: Project
         2.4 Environment variables: ASPNETCORE_ENVIRONMENT=Development
         2.5 App url: https://localhost:5001;http://localhost:5000
-<a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png" align="left" height="200" width="300" ></a>
+<a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png" height="200" width="300" ></a>
