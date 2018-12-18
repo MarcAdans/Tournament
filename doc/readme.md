@@ -4,17 +4,17 @@
 
 # Como executar a aplicação!
 
-Solution!
+## Solution!
     1.Click com o botão direito do mouse na Solution Tournament.
-        1.1 Menu Properties.
-        1.2 Selecione a opção 'Multiple Start Projects'
+    1.1 Menu Properties.
+    1.2 Selecione a opção 'Multiple Start Projects'
         1.3 Projeto Tournament.Angular.Web aplicar action como 'Start'
         1.4 Projeto Tournament.Api aplicar action como 'Start'
         
         
 <a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/solution-property.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/solution-property.png" height="300" width="500" ></a>
 
-Tournament.Api!
+## Tournament.Api!
     2.Navegue até src/api/Tournament.Api, Click com o botão direito do mouse.
         2.1 Menu Properties.
         2.2 Selecione em Profile: Tournament.Api
