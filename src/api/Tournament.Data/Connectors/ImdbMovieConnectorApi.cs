@@ -23,27 +23,23 @@ namespace Tournament.Data.Connectors
                 .GetAsync<ImdbMovie>(options.FindByIdEndPoint(id))
                 .ConfigureAwait(false);
 
-        public async Task UpdateMovieAsync(Movie movie)
-        {
-            if (options.Enabled)
-            {
-                var imdb = await HttpClientService
-                    .GetAsync<ImdbMovie>(options.FindByIdEndPoint(movie.Id))
-                    .ConfigureAwait(false);
-
-                movie.Poster = imdb.Poster;
-            }
-            else
-            {
-                movie.Poster = options.DefaultPoster;
-            }
-        }
-
         public async Task UpdateMoviesAsync(IEnumerable<Movie> movies)
         {
-            var tasks = movies.Select(UpdateMovieAsync);
-            await Task.WhenAll(tasks)
-                      .ConfigureAwait(false);
+            foreach (var movie in movies)
+            {
+                if (options.Enabled)
+                {
+                    var imdb = await HttpClientService
+                        .GetAsync<ImdbMovie>(options.FindByIdEndPoint(movie.Id))
+                        .ConfigureAwait(false);
+
+                    movie.Poster = imdb.Poster;
+                }
+                else
+                {
+                    movie.Poster = options.DefaultPoster;
+                }
+            }
         }
     }
 }
