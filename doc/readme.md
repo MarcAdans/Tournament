@@ -22,7 +22,7 @@
         2.5 Launch browser: swagger/
         2.6 Environment variables: ASPNETCORE_ENVIRONMENT=Development
         2.7 App url: https://localhost:5001;http://localhost:5000
-<a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png" height="200" width="300" ></a>
+<a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png" height="300" width="500" ></a>
 
 
 ## Tournament.Angular.Web!
@@ -32,4 +32,4 @@
         2.3 Selecione em launch: IIS Express
         2.4 Environment variables: ASPNETCORE_ENVIRONMENT=Development
         2.5 App url: http://localhost:49753
-<a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-api.png" height="200" width="300" ></a>
+<a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-web.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-web.png" height="300" width="500" ></a>
