@@ -15,9 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\api\Tournament.Application\Tournament.Application.csproj" />
-    <ProjectReference Include="..\src\api\Tournament.CrossCutting\Tournament.CrossCutting.csproj" />
-    <ProjectReference Include="..\src\api\Tournament.Domain\Tournament.Domain.csproj" />
+    <ProjectReference Include="..\..\src\api\Tournament.Application\Tournament.Application.csproj" />
+    <ProjectReference Include="..\..\src\api\Tournament.CrossCutting\Tournament.CrossCutting.csproj" />
+    <ProjectReference Include="..\..\src\api\Tournament.Data\Tournament.Data.csproj" />
+    <ProjectReference Include="..\..\src\api\Tournament.Domain\Tournament.Domain.csproj" />
+    <ProjectReference Include="..\..\src\api\Tournament.Infra.Ioc\Tournament.Infra.Ioc.csproj" />
   </ItemGroup>
 
 </Project>
