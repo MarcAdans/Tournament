@@ -1,12 +1,20 @@
 # Tournament
 
+<a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/application.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/application.png" height="600" width="800" ></a>
+
+## Contato
+### Márcio Adão
+### marc.adans@gmail.com
+[![N|Solid](https://avatars1.githubusercontent.com/u/16047163?s=100&v=4)](https://github.com/MarcAdans)
+
+## Documentação
 Aplicação possui doumentação da API em https://localhost:5001/swagger
 
 ## Poster opcional.
 A Aplicação busca os posters dos filmes na API do IMDB (http://www.omdbapi.com/)
 Essa configuração pode ser habilitada em Tournament.Api/appsettings.Development:ImdbMovieOptions:Enabled
 
-[![N|Solid](https://avatars1.githubusercontent.com/u/16047163?s=100&v=4)](https://github.com/MarcAdans)
+
 # Modo 1 (ClickAndRun)
     1.Na pasta do projeto ../Tournament
     1.2 Execute run.cmd
