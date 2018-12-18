@@ -1,9 +1,25 @@
 # Tournament
 
 [![N|Solid](https://avatars1.githubusercontent.com/u/16047163?s=100&v=4)](https://github.com/MarcAdans)
-marc.adans@gmail.com
+# Modo 1 (ClickAndRun)
+    1.Na pasta do projeto ../Tournament
+    1.2 Execute run.cmd
+    1.3 Abra a url https://localhost:49753
+    
+# Mod 2 (Script)
+    1.1 abra uma janela de linha de comando (cmd)
+        1.2 cd ../src/api/Tournament.Api
+        1.3 dotnet build
+        1.4 dotnet run
+        
+    2.1 abra uma nova janela de linha de comando (cmd)
+        2.2 cd ../src/web/Tournament.Angular.Web
+        2.3 dotnet build
+        2.4 dotnet run       
+    
+    3. Abra a url https://localhost:49753    
 
-# Configurando a execução/debug
+# Modo 3 - Edição, DEBUG!
 
 ## Solution!
     1.Click com o botão direito do mouse na Solution Tournament.
@@ -34,8 +50,3 @@ marc.adans@gmail.com
         2.4 Environment variables: ASPNETCORE_ENVIRONMENT=Development
         2.5 App url: http://localhost:49753
 <a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-web.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-web.png" height="300" width="500" ></a>
-
-## Execução/Debug
-
-    1.F5 or Menu->DEBUG->Start Debguging
-        
