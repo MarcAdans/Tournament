@@ -1,5 +1,7 @@
 # Tournament
 
+Aplicação possui doumentação da API em https://localhost:5001/swagger
+
 [![N|Solid](https://avatars1.githubusercontent.com/u/16047163?s=100&v=4)](https://github.com/MarcAdans)
 # Modo 1 (ClickAndRun)
     1.Na pasta do projeto ../Tournament
