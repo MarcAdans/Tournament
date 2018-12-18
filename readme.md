@@ -1,5 +1,6 @@
 # Tournament
 
+Desenvolvido por esse cara aí embaixo.
 [![N|Solid](https://avatars1.githubusercontent.com/u/16047163?s=100&v=4)](https://github.com/MarcAdans)
 
 # Configurando a execução/debug
