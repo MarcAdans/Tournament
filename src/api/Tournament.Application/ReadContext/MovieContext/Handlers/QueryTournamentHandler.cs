@@ -52,6 +52,7 @@ namespace Tournament.Application.ReadContext.MovieContext.Handlers
             var movies = mapper.Map<IEnumerable<Movie>>(lambda3Movies)
                                        .OrderBy(m => m.Title)
                                        .Select(m => m);
+
             await imdbApi.UpdateMoviesAsync(movies)
                          .ConfigureAwait(false);
 

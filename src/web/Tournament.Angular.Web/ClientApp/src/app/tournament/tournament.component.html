@@ -53,7 +53,7 @@
       <ng-template ngFor let-match [ngForOf]="rounds">
         <ng-container *ngIf="{ winner: getMovie(match.winnerId), loser: getMovie(match.loserId)} as variable">
           <div class="game rounded">{{variable.winner.title}}&nbsp;({{variable.winner.rate}})</div>
-          <div class="game rounded"><s>{{variable.loser.title}}&nbsp;({{variable.winner.rate}})</s></div>
+          <div class="game rounded"><s>{{variable.loser.title}}&nbsp;({{variable.loser.rate}})</s></div>
         </ng-container>
       </ng-template>
     </div>
