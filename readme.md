@@ -2,7 +2,7 @@
 
 [![N|Solid](https://avatars1.githubusercontent.com/u/16047163?s=100&v=4)](https://github.com/MarcAdans)
 
-# Como executar a aplicação!
+# Configurando a execução/debug
 
 ## Solution!
     1.Click com o botão direito do mouse na Solution Tournament.
@@ -33,3 +33,8 @@
         2.4 Environment variables: ASPNETCORE_ENVIRONMENT=Development
         2.5 App url: http://localhost:49753
 <a href="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-web.png"><img src="https://raw.githubusercontent.com/MarcAdans/Tournament/master/doc/img/project-web.png" height="300" width="500" ></a>
+
+## Execução/Debug
+
+    1.F5 or Menu->DEBUG->Start Debguging
+        
