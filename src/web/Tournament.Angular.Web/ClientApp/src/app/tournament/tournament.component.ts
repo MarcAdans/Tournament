@@ -8,14 +8,12 @@ import { MovieService } from "../services/movie.service";
 import { TournamentService } from "../services/tournament.service";
 import { TournamentRequest } from '../models/TournamentRequest.model';
 
-
 @Component({
   selector: 'app-tournament',
   templateUrl: './tournament.component.html',
   styleUrls: ['./tournament.component.css']
 })
 export class TournamentComponent {
-
   public tournament: Tournament;
 
   constructor(private readonly tournamentService: TournamentService,
@@ -25,13 +23,10 @@ export class TournamentComponent {
   }
 
   ngOnInit(): void {
-
     if (!this.data.movies || this.data.movies.length == 0) {
       this.back();
       this.toastr.error('Você não selecionou nenhum item.', ':0');
-
     } else {
-
       this.tournamentService.Calculate(this.data).subscribe(result => {
         console.log(result);
         this.tournament = result;
@@ -42,7 +37,7 @@ export class TournamentComponent {
       });
     }
 
-    this.data.movies = [];
+    //this.data.movies = [];
   }
 
   public getMovie(id: string): Movie {

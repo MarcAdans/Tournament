@@ -1,11 +1,12 @@
+<div *ngIf="!tournament" class="loader-container">
+  <div class="loader row align-items-center"></div>
+</div>
+
 <div class="container-fluid">
-  <div *ngIf="!tournament" class="row shadow-lg p-1 mb-3 mt-3 bg-white rounded">
-    <h5>Carregando filmes, aguarde...</h5>
-  </div>
   <div *ngIf="tournament" class="row p-1 mb-3 mt-3 ">
     <nav class="navbar fixed-top ">
       <div class="col text-right">
-        <button class="btn-lg btn-bd-primary" (click)="back()">CRIAR NOVO TORNEIO</button>
+        <button class="btn" (click)="back()">CRIAR NOVO TORNEIO</button>
       </div>
     </nav>
   </div>
@@ -14,7 +15,7 @@
     <div class="input-group">
       <div class="input-group-prepend">
         <div class="input-group-text">
-          <h1 class="text-light">1&ordm;</h1>
+          <h1 class="ordm">1&ordm;</h1>
         </div>
       </div>
       <div class="form-control">
@@ -33,7 +34,7 @@
     <div class="input-group">
       <div class="input-group-prepend">
         <div class="input-group-text">
-          <h1 class="text-light">2&ordm;</h1>
+          <h1 class="ordm">2&ordm;</h1>
         </div>
       </div>
       <div class="form-control">
@@ -48,18 +49,28 @@
       </div>
     </div>
   </div>
-  <div *ngIf="tournament " class="row p-1 rounded row-tournament">
-    <div class="tournament text-light" *ngFor="let rounds of tournament.matches; let i=index">
-      <ng-template ngFor let-match [ngForOf]="rounds">
-        <ng-container *ngIf="{ winner: getMovie(match.winnerId), loser: getMovie(match.loserId)} as variable">
-          <div class="game rounded">{{variable.winner.title}}&nbsp;({{variable.winner.rate}})</div>
-          <div class="game rounded"><s>{{variable.loser.title}}&nbsp;({{variable.loser.rate}})</s></div>
-        </ng-container>
-      </ng-template>
-    </div>
+  <div *ngIf="tournament " class="row p-1 mb-3 rounded row-tournament">
+    <ng-container *ngFor="let rounds of tournament.matches; let i=index">
+      <div class="tournament text-light">
+        <ng-template ngFor let-match [ngForOf]="rounds">
+          <ng-container *ngIf="{ winner: getMovie(match.winnerId), loser: getMovie(match.loserId)} as variable">
+            <div class="game text-center">{{variable.winner.title}}&nbsp;({{variable.winner.rate}})</div>
+            <div class="game text-center"><s>{{variable.loser.title}}&nbsp;({{variable.loser.rate}})</s></div>
+          </ng-container>
+        </ng-template>
+      </div>
+
+      <div class="tournament text-light">
+        <ng-template ngFor let-match [ngForOf]="rounds">
+          <ng-container>
+            <div class="line level-{{i+1}}">&nbsp;</div>
+          </ng-container>
+        </ng-template>
+      </div>
+    </ng-container>
+
     <div class="tournament text-light">
-      <div class="game rounded">&#9813;&nbsp;{{champion.title}}&nbsp;&#9813;</div>
+      <div class="game  text-center">&#9813;&nbsp;{{champion.title}}&nbsp;&#9813;</div>
     </div>
   </div>
 </div>
-

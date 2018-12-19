@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from "../../environments/environment";
 import { Movie } from '../models/movie.model';
 import { TournamentRequest } from '../models/TournamentRequest.model';
@@ -22,6 +22,9 @@ export class HomeComponent {
     private readonly tournamentService: TournamentService,
     private readonly router: Router,
     private data: TournamentRequest) {
+  }
+
+  ngOnInit(): void {
     this.movieService.getMovies().subscribe(result => {
       this.movies = result;
     }, error => {
@@ -29,13 +32,12 @@ export class HomeComponent {
       this.toastr.error('Não nos abandone, deu ruim mas tente novamente.', 'Deu ruim...');
     });
   }
-
   public checkedState(event: MouseEvent, id) {
     var checkbox = event.target as HTMLInputElement;
 
     if (this.totalSelected >= 8) {
       checkbox.checked = false;
-      this.toastr.info('O máximo de itens é apenas 8 filmes.', ':)');
+      this.toastr.warning('O máximo de itens é apenas 8 filmes.', ':)');
     }
 
     if (checkbox.checked === true) {
